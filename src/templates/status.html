@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Pool Controller Status Info</title>
+
+        <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+
+        <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="/static/css/bootstrap-grid.min.css" rel="stylesheet" />
+        <script src="/static/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/static/style.css" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta http-equiv="refresh" content="3">	
+</head>
+
+<body>
+	<div class="container">
+		<h3>Pool Controller Detailed Status</h3>
+		<h3>Last Update: {{data['ts']}}</h3>
+		<table id="statusTable" class="table">
+			<tr><th>Property</th>		<th>Value</th></tr>
+
+			<tr><td><h3>Equipment Status</h3></td></tr>
+			<tr><td>System Mode</td>	    <td>{{data['sm']}}</td></tr>
+			<tr><td>Pump Power</td>		    <td>{{data['pp']}}</td></tr>
+			<tr><td>Heater Power</td>	    <td>{{data['hp']}}</td></tr>
+			<tr><td>Heater Enable</td>	  <td>{{data['he']}}</td></tr>
+			<tr><td>Valve Mode</td>	      <td>{{data['vm']}}</td></tr>`
+
+			<tr><td><h3>Timer Values</h3>	</td></tr>
+			<tr><td>Event1 Pump On</td>	  <td>{{data['te1on']}}</td></tr>
+			<tr><td>Event1 Pump Off</td>	<td>{{data['te1off']}}</td></tr>
+			<tr><td>Event2 Pump On</td>	  <td>{{data['te2on']}}</td></tr>
+			<tr><td>Event2 Pump Off</td>	<td>{{data['te2off']}}</td></tr>
+			<tr><td>Event3 Pump Off</td>	<td>{{data['te3off']}}</td></tr>
+			<tr><td>Last Pump On</td>	    <td>{{data['lpo']}}</td></tr>
+			<tr><td>Next Pump Off</td>	  <td>{{data['npo']}}</td></tr>
+			<tr><td>Remaining Time</td>   <td>{{data['rt']}}</td></tr>
+
+      <tr><td><h3>Temperatures</h3>	</td></tr>
+			<tr><td>Thread Running</td>	  <td>{{data['ttr']}}</td></tr>
+			<tr><td>Spa Set Point </td>	  <td>{{data['sp']}}</td></tr>
+			<tr><td>Spa Temp</td>		      <td>{{data['st']}}</td></tr>
+			<tr><td>Air Temp</td>		      <td>{{data['at']}}</td></tr>
+			<tr><td>Controller Temp</td>	<td>{{data['ct']}}</td></tr>
+			<tr><td>CPU Temp</td>		      <td>{{data['cput']}}</td></tr>
+        
+			<tr><td><h3>Power System</h3> </td></tr>
+			<tr><td>PJ Batt Charge</td>	  <td>{{data['pjbc']}}</td></tr>
+			<tr><td>PJ Status</td>		    <td>{{data['pjs']}}</td></tr>
+        
+			<tr><td><h3>1-Wire Status</h3></td></tr>
+			<tr><td>Spa Device   </td>	  <td>{{data['owsd']}}</td></tr>
+			<tr><td>Contr Device </td>	  <td>{{data['owcd']}}</td></tr>
+			<tr><td>Air Device   </td>	  <td>{{data['owad']}}</td></tr>
+			<tr><td>Spa Errors   </td>	  <td>{{data['owse']}}</td></tr>
+			<tr><td>Contr Errors </td>	  <td>{{data['owce']}}</td></tr>
+			<tr><td>Air Errors   </td>	  <td>{{data['owae']}}</td></tr>
+
+			<tr><td><h3>Software Versions</h3></td></tr>
+			<tr><td>Software vers</td>	  <td>{{data['swv']}}</td></tr>
+			<tr><td>PiJuice vers</td>	    <td>{{data['pjv']}}</td></tr>
+			<tr><td>CPU Stats</td>		    <td>{{data['cpus']}}</td></tr>
+		</table>
+		
+    <div id="footnote" class="container">
+    <p>
+    <a href="/index.html" >Main</a> |
+    Status |
+    <a href="/logs.html">Logs</a> |
+    <a href="/tools.html" >Tools</a> | 
+    <a href="/logout" >Logout</a>
+    </p>
+    </div>
+		</br>
+		webstatus v1.70   23Jul20
+	</div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+/* Pool Controller Style Sheet */
+/* 08-17-18                    */
+
+
+.header {font-size: 32px;}
+.subheader {font-size: 16px;}
+.footer {font-size: 7px;}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+a:link, a:visited {
+    text-decoration: none;
+}
+
+
+.tempStatus {font-size: 32px;}
+
+
+.alert { font-size:24px }
+
+
+.btn-lg { width: 150px;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        margin: 10px
+}

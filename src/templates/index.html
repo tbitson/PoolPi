@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Pool & Spa Controller</title>
+  
+  <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+  <link href="/static/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="/static/css/bootstrap-grid.min.css" rel="stylesheet" />
+  <script src="/static/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/static/style.css" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta http-equiv="refresh" content="1">
+</head>
+
+<body>
+  <div id="header" class="header"> Pool & Spa Controller</div>
+  <div id="subheader">
+    Updated: {{ data['ts']}}
+  </div>
+  <br>
+  
+  <div id="tempStatus" class="container">
+    <div class="temp text-center">
+      Air Temp       = {{data['at']}}&degF<br>
+      Spa Temp       = {{data['st']}}&degF<br>
+      Spa Setpoint   = {{data['sp']}}&degF<br>
+      Time Remaining = {{data['tr']}} <br><br>
+    </div>
+  </div>
+
+  <div id="pumpStatus" class="container">
+    {% if data['pp'] == '1' %}
+      <div class="alert alert-danger" role="alert">Pump is On</div>
+    {% else %}
+        <div class="alert alert-info" role="alert">Pump is Off</div>
+    {% endif %}
+    
+    {% if data['he'] == '1' %}
+      <div class="alert alert-danger" role="alert">Heater is On</div>
+      {% else %}
+        <div class="alert alert-info" role="alert">Heater is Off</div>
+    {% endif %}
+
+
+    {% if data['sm'] == "OFF " %}
+      <div class="alert alert-info" role="alert">   Mode: Off     </div>
+    {% elif data['sm'] == "PUMP" %}
+      <div class="alert alert-primary" role="alert">Mode: Pump    </div>
+    {% elif data['sm'] == "SPA " %}
+      <div class="alert alert-danger" role="alert"> Mode: Spa      </div>
+    {% elif data['sm'] == "MAN " %}
+      <div class="alert alert-danger" role="alert"> Mode: Manual   </div>
+    {% elif data['sm'] == "FREZ" %}
+      <div class="alert alert-danger" role="alert"> Mode: Freeze   </div>
+    {% elif data['sm'] == "COOL" %}
+      <div class="alert alert-primary" role="alert">Mode: Cooldown </div>
+    {% else %}
+      <div class="alert alert-primary" role="alert">Mode: Error </div>
+    {% endif %}
+  </div>
+    
+  <div id="pumpActions" class="container">
+    <div class="border border-secondary">
+      <div class="panel-heading">Controls</div>
+        <div class="panel-body">
+
+        {% if data['sm'] == "OFF " %}
+          <a href="/pumpOn"  class="btn btn-primary btn-lg"  role="button">Pump On</a>
+        {% elif data['sm'] == "SPA " %}
+          <a href="/pumpOff" class="btn btn-secondary btn-lg disabled" role="button">Pump Off</a>
+        {% else %}
+          <a href="/pumpOff" class="btn btn-primary btn-lg" role="button">Pump Off</a>
+        {% endif %}
+
+        {% if data['sm'] == "SPA " %}
+          <a href="/spaOff"  class="btn btn-primary btn-lg" role="button">Spa Off</a>
+        {% else %}
+          <a href="/spaOn"   class="btn btn-primary btn-lg" role="button">Spa On</a>        
+        {% endif %}
+        <br>
+
+
+        {% if data['sm'] == "SPA " %}
+          <a href="/incTemp" class="btn btn-primary btn-lg" role="button">Spa Temp +</a>
+          <a href="/decTemp" class="btn btn-primary btn-lg" role="button">Spa Temp -</a>
+          <a href="/incTime" class="btn btn-primary btn-lg" role="button">Spa Time +</a>
+          <a href="/decTime" class="btn btn-primary btn-lg" role="button">Spa Time -</a>
+        {% else %}
+          <a href="/incTemp" class="btn btn-secondary btn-lg disabled" role="button">Spa Temp +</a>
+          <a href="/decTemp" class="btn btn-secondary btn-lg disabled" role="button">Spa Temp -</a>
+          <a href="/incTime" class="btn btn-secondary btn-lg disabled" role="button">Spa Time +</a>
+          <a href="/decTime" class="btn btn-secondary btn-lg disabled" role="button">Spa Time -</a>
+        {% endif %}
+        <br><br>
+    </div>
+  </div>
+
+  <div id="footnote" class="container">
+    <p>
+      Main | 
+      <a href="/status.html" >Status</a> |
+      <a href="/logs.html">Logs</a> |
+      <a href="/tools.html">Tools</a> |
+      <a href="/logout" >Logout</a>
+    </p>
+  </div>
+  <br><br>
+  <div id="footer" class="container">
+    index.html v1.70 23Jul20
+  </div>
+</body>
+</html>
